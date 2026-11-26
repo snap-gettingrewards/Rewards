@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تأكيد الاستلام | Snapchat Spotlight</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* تنسيقات إضافية لصفحة التأكيد */
+        body { background-color: #fcfcfc; }
+        
+        .success-card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 450px;
+            margin: 60px auto;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        .check-icon-wrap {
+            width: 70px;
+            height: 70px;
+            background: #f0fff4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .back-home-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 16px;
+            background-color: #FFFC00;
+            color: #000;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: 800;
+            font-size: 1rem;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(255, 252, 0, 0.3);
+        }
+
+        .back-home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 252, 0, 0.4);
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 20px 0 30px;
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container" style="text-align: center; padding: 15px;">
+            <img src="logo.png" alt="Snapchat" style="width: 42px;">
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="success-card">
+            <div class="check-icon-wrap">
+                <img src="https://img.icons8.com/fluency/96/checked.png" alt="Success" style="width: 45px;">
+            </div>
+
+            <h1 style="color: #1a1a1a; font-size: 1.6rem; font-weight: 800; margin-bottom: 10px;">تم استلام طلبك!</h1>
+            
+            <div class="info-box">
+                نشكرك على تقديم طلبك للانضمام إلى برنامج مكافآت منصة الأضواء. طلبك الآن قيد المراجعة الفنية.
+            </div>
+
+            <p style="color: #666; font-size: 0.9rem; margin-bottom: 30px;">
+                سيتم إخطارك بالنتيجة عبر رسالة نصية أو بريد إلكتروني خلال 24-48 ساعة القادمة في حال مطابقة حسابك لمعايير الأهلية.
+            </p>
+            
+            <a href="https://www.snapchat.com" class="back-home-btn">العودة إلى التطبيق</a>
+
+            <p style="margin-top: 25px; font-size: 0.75rem; color: #aaa;">
+                رقم المرجع: <span style="font-family: monospace;" id="refID">#SPOT-2026-XXXX</span>
+            </p>
+        </div>
+    </main>
+
+    <footer style="margin-top: 40px;">
+        <div class="container" style="text-align: center; opacity: 0.6;">
+            <p style="font-size: 0.8rem;">© 2026 Snapchat Spotlight Program. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // كود بسيط لتوليد رقم مرجع عشوائي لزيادة المصداقية
+        const randomRef = Math.random().toString(36).substr(2, 9).toUpperCase();
+        document.getElementById('

